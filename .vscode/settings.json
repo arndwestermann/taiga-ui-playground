@@ -1,0 +1,6 @@
+{
+	"prettier.configPath": ".prettierrc",
+	"angular.log": "verbose",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"scss.lint.unknownAtRules": "ignore"
+}

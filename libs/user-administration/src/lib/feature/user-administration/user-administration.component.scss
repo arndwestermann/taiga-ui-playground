@@ -1,0 +1,26 @@
+:host {
+	@apply block h-full bg-red-500;
+}
+
+td,
+th {
+	white-space: nowrap;
+	border-color: transparent;
+	border-right-color: var(--tui-base-04);
+
+	&:last-child {
+		border-right-color: transparent;
+	}
+}
+
+tbody {
+	border-color: transparent;
+}
+
+tr:nth-child(odd) td {
+	background: var(--tui-base-02);
+}
+
+tr:hover td {
+	background: var(--tui-primary-hover);
+}

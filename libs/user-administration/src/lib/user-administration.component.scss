@@ -1,0 +1,27 @@
+:host {
+	display: block;
+	height: calc(100vh - 50px); // viewport height - top header
+}
+
+td,
+th {
+	white-space: nowrap;
+	border-color: transparent;
+	border-right-color: var(--tui-base-04);
+
+	&:last-child {
+		border-right-color: transparent;
+	}
+}
+
+tbody {
+	border-color: transparent;
+}
+
+tr:nth-child(odd) td {
+	background: var(--tui-base-02);
+}
+
+tr:hover td {
+	background: var(--tui-primary-hover);
+}

@@ -1,0 +1,120 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "application",
+	"generators": {
+		"@schematics/angular:component": {
+			"style": "scss"
+		}
+	},
+	"sourceRoot": "apps/frontend/src",
+	"prefix": "taiga-ui-playground",
+	"targets": {
+		"build": {
+			"executor": "@angular-devkit/build-angular:browser",
+			"options": {
+				"allowedCommonJsDependencies": ["angular2-text-mask"],
+				"outputPath": "dist/apps/frontend",
+				"index": "apps/frontend/src/index.html",
+				"main": "apps/frontend/src/main.ts",
+				"polyfills": "apps/frontend/src/polyfills.ts",
+				"tsConfig": "apps/frontend/tsconfig.app.json",
+				"assets": [
+					{
+						"glob": "**/*",
+						"input": "apps/frontend/src/assets/",
+						"output": "./assets/"
+					},
+					{
+						"glob": "**/*",
+						"input": "libs/core/assets/",
+						"output": "./assets/"
+					},
+					{
+						"glob": "**/*",
+						"input": "node_modules/@taiga-ui/icons/src",
+						"output": "assets/taiga-ui/icons"
+					},
+					"apps/frontend/src/favicon.ico",
+					"apps/frontend/src/.htaccess"
+				],
+				"styles": [
+					"node_modules/@taiga-ui/styles/taiga-ui-global.less",
+					"node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+					"apps/frontend/src/styles.scss"
+				],
+				"scripts": [],
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"buildOptimizer": false,
+				"sourceMap": true,
+				"optimization": false,
+				"namedChunks": true
+			},
+			"configurations": {
+				"production": {
+					"fileReplacements": [
+						{
+							"replace": "apps/frontend/src/environments/environment.ts",
+							"with": "apps/frontend/src/environments/environment.prod.ts"
+						}
+					],
+					"optimization": true,
+					"outputHashing": "all",
+					"sourceMap": false,
+					"namedChunks": false,
+					"extractLicenses": true,
+					"vendorChunk": false,
+					"buildOptimizer": true,
+					"budgets": [
+						{
+							"type": "initial",
+							"maximumWarning": "5mb",
+							"maximumError": "6mb"
+						},
+						{
+							"type": "anyComponentStyle",
+							"maximumWarning": "6kb",
+							"maximumError": "10kb"
+						}
+					]
+				}
+			},
+			"outputs": ["{options.outputPath}"],
+			"defaultConfiguration": ""
+		},
+		"serve": {
+			"executor": "@angular-devkit/build-angular:dev-server",
+			"options": {
+				"browserTarget": "frontend:build",
+				"host": "0.0.0.0"
+			},
+			"configurations": {
+				"production": {
+					"browserTarget": "frontend:build:production"
+				}
+			}
+		},
+		"extract-i18n": {
+			"executor": "@angular-devkit/build-angular:extract-i18n",
+			"options": {
+				"browserTarget": "frontend:build"
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": ["apps/frontend/src/**/*.ts", "apps/frontend/src/**/*.html"]
+			},
+			"outputs": ["{options.outputFile}"]
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "apps/frontend/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"outputs": ["coverage/apps/frontend"]
+		}
+	},
+	"tags": []
+}

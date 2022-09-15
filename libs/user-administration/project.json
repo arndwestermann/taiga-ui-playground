@@ -1,23 +1,27 @@
 {
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"projectType": "library",
 	"sourceRoot": "libs/user-administration/src",
 	"prefix": "taiga-ui-playground",
 	"targets": {
 		"build": {
 			"executor": "@nrwl/angular:package",
-			"outputs": ["dist/libs/user-administration"],
 			"options": {
+				"tsConfig": "libs/user-administration/tsconfig.lib.json",
 				"project": "libs/user-administration/ng-package.json"
 			},
 			"configurations": {
 				"production": {
 					"tsConfig": "libs/user-administration/tsconfig.lib.prod.json"
-				},
-				"development": {
-					"tsConfig": "libs/user-administration/tsconfig.lib.json"
 				}
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": ["libs/user-administration/src/**/*.ts", "libs/user-administration/src/**/*.html"]
 			},
-			"defaultConfiguration": "production"
+			"outputs": ["{options.outputFile}"]
 		},
 		"test": {
 			"executor": "@nrwl/jest:jest",
@@ -25,12 +29,6 @@
 			"options": {
 				"jestConfig": "libs/user-administration/jest.config.ts",
 				"passWithNoTests": true
-			}
-		},
-		"lint": {
-			"executor": "@nrwl/linter:eslint",
-			"options": {
-				"lintFilePatterns": ["libs/user-administration/**/*.ts", "libs/user-administration/**/*.html"]
 			}
 		}
 	},

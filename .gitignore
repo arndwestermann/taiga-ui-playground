@@ -25,6 +25,7 @@ node_modules
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -33,9 +34,14 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+composer.lock
 
 # System Files
 .DS_Store
 Thumbs.db
+
+ubuntu-bionic-18.04-cloudimg-console.log
+
+migrations.json
 
 .angular

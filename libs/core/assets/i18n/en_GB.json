@@ -1,0 +1,8 @@
+{
+	"UserAdministration": {
+		"Username": "Username",
+		"Firstname": "Firstname",
+		"Lastname": "Lastname",
+		"Email": "Email"
+	}
+}

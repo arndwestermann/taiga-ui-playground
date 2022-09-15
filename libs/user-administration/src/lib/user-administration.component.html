@@ -1,0 +1,18 @@
+<table tuiTable [columns]="columns" class="w-full">
+	<thead>
+		<tr tuiThGroup>
+			<th *tuiHead="'username'" tuiTh [sticky]="true">{{ 'UserAdministration.Username' | transloco }}</th>
+			<th *tuiHead="'firstname'" tuiTh [sticky]="true">{{ 'UserAdministration.Firstname' | transloco }}</th>
+			<th *tuiHead="'lastname'" tuiTh [sticky]="true">{{ 'UserAdministration.Lastname' | transloco }}</th>
+			<th *tuiHead="'email'" tuiTh [sticky]="true">{{ 'UserAdministration.Email' | transloco }}</th>
+		</tr>
+	</thead>
+	<tbody *ngxObserve="users$ as users" tuiTbody [data]="users">
+		<tr *tuiRow="let user of users; let index = index" tuiTr>
+			<td *tuiCell="'username'" tuiTd>{{ user.username }}</td>
+			<td *tuiCell="'firstname'" tuiTd>{{ user.firstname }}</td>
+			<td *tuiCell="'lastname'" tuiTd>{{ user.lastname }}</td>
+			<td *tuiCell="'email'" tuiTd>{{ user.email }}</td>
+		</tr>
+	</tbody>
+</table>
